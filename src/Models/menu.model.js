@@ -56,11 +56,7 @@ const atualizarMenu = async (nome_pizza,image_pizza,descricao_pizza,preco_pizza,
 const excluirMenu = async (id) => {
     try {
         const {rows} = await db.query('DELETE FROM produto WHERE id_pizza = $1', [id]);
-        if (result.row.length === 1) {
-            res.status(200).json({ message: "Produto excluido com sucesso" });
-        } else {
-            res.status(404).json({ message: "Produto não encontrado" });
-        }
+        return rows;
     } catch (error) {
         console.log("Error during product deletion:", error);
         res.status(500).json({ message: "erro interno no servidor ao excluir pizza :/" });
