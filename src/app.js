@@ -1,9 +1,11 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
+app.use(cors());
 
 const clienteRouter = require("./Routers/cliente.router");
 const funcionarioRouter = require("./Routers/funcionario.router");
